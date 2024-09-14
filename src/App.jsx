@@ -6,6 +6,7 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [newsData, setNewsData] = useState([]);
   const [category, setCategory] = useState("general");
+  const [searchIndication,setSearchIndication]=useState(false)
 
 
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -17,6 +18,7 @@ const App = () => {
       );
       const data = await res.json();
       setNewsData(data.articles);
+      setSearchIndication(false);
       // console.log(data.articles);
     } catch (err) {
       console.log("err", err);
@@ -33,6 +35,7 @@ const App = () => {
       );
       const data = await res.json();
       setNewsData(data.articles);
+      setSearchIndication(true);
     } catch (err) {
       console.log("error", err);
     }
@@ -60,6 +63,7 @@ const App = () => {
         category={category}
         setCategory={setCategory}
         newsData={newsData}
+        searchIndication={searchIndication}
       />
     </>
   );

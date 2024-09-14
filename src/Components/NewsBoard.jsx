@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
 
-const NewsBoard = ({ search,category,setCategory,newsData }) => {
+const NewsBoard = ({ search,category,setCategory,newsData,searchIndication }) => {
   // const [category, setCategory] = useState("general");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -13,6 +13,7 @@ const NewsBoard = ({ search,category,setCategory,newsData }) => {
 
   return (
     <div className="min-h-screen pt-20 dark:bg-blackPrimary dark:text-white">
+      {searchIndication && <p className="text-center mb-2 text-green-400">Search results for <em>"{search}"</em></p>}
       <div className="hidden md:flex flex-wrap justify-center gap-4">
         {[
           "general",
