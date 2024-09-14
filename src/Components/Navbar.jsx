@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 
-const Navbar = ({ search, setSearch,handleSearch }) => {
+const Navbar = ({ search, setSearch, handleSearch }) => {
   const [theme, setTheme] = useState("light");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -22,6 +22,10 @@ const Navbar = ({ search, setSearch,handleSearch }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const handleMobileSearch = () => {
+    handleSearch();
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="bg-white dark:bg-blackPrimary shadow-md fixed top-0 w-full z-50">
@@ -32,7 +36,7 @@ const Navbar = ({ search, setSearch,handleSearch }) => {
         </div>
 
         {/* Search Input */}
-        <div className="flex-grow max-w-xl flex items-center">
+        <div className="hidden md:flex max-w-xl items-center">
           <input
             type="text"
             placeholder="Search news"
@@ -69,14 +73,29 @@ const Navbar = ({ search, setSearch,handleSearch }) => {
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 shadow-lg mt-2">
           <div className="flex flex-col px-4 py-2">
+            <div className="flex items-center mb-2">
+              <input
+                type="text"
+                placeholder="Search news"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="md:hidden w-[30%] flex-grow px-4 py-2 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+              />
+              <button
+                className="md:hidden ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 flex items-center justify-center self-stretch"
+                onClick={handleMobileSearch}
+              >
+                <FaSearch />
+              </button>
+            </div>
             <button
               onClick={() => {
                 setIsMenuOpen(false);
                 handleToggle();
               }}
-              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white"
+              className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white mb-2"
             >
-              {theme === "dark" ? "Light Mode" : "Dark Mode"}
+              {theme === "dark" ? "Change Light" : "Change Dark"}
             </button>
           </div>
         </div>

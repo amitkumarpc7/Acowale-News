@@ -6,7 +6,7 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [newsData, setNewsData] = useState([]);
   const [category, setCategory] = useState("general");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
 
   const API_KEY = import.meta.env.VITE_API_KEY;
   // for Categories
