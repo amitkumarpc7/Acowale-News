@@ -45,7 +45,7 @@ const Navbar = ({ search, setSearch, handleSearch }) => {
             className="flex-grow px-4 py-2 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white"
           />
           <button
-            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 flex items-center justify-center self-stretch"
+            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-400 flex items-center justify-center self-stretch"
             onClick={handleSearch}
           >
             <FaSearch />
@@ -82,7 +82,7 @@ const Navbar = ({ search, setSearch, handleSearch }) => {
                 className="md:hidden w-[30%] flex-grow px-4 py-2 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white"
               />
               <button
-                className="md:hidden ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 flex items-center justify-center self-stretch"
+                className="md:hidden ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg dark:hover:bg-blue-400 dark:bg-blue-700 flex items-center justify-center self-stretch"
                 onClick={handleMobileSearch}
               >
                 <FaSearch />
