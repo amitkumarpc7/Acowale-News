@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
 
-const NewsBoard = ({search}) => {
+const NewsBoard = ({ search }) => {
   const [newsData, setNewsData] = useState([]);
   const [category, setCategory] = useState("general");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  //   for pagination
-//   const [currentPage,setCurrentPage]=useState(10)
 
   const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -18,17 +16,19 @@ const NewsBoard = ({search}) => {
     setNewsData(data.articles);
     // console.log(data.articles);
   };
+
   useEffect(() => {
     getData(category);
   }, [category]);
+
+  // Dropdown for mobile screens
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  const onSearch=(e)=>{
-
-  }
+  
+  const onSearch = (e) => {};
   return (
-    <div className=" pt-20">
+    <div className="min-h-screen pt-20 dark:bg-blackPrimary dark:text-white">
       <div className="hidden md:flex flex-wrap justify-center gap-4">
         {[
           "general",
@@ -43,8 +43,8 @@ const NewsBoard = ({search}) => {
         ].map((cat) => (
           <button
             key={cat}
-            className={`px-4 py-2 rounded ${
-              category === cat ? "bg-blue-500 text-white" : "bg-gray-200"
+            className={`px-4 py-2 rounded dark:text-black ${
+              category === cat ? "bg-blue-500 text-white " : "bg-gray-200"
             } ${category === cat ? "font-bold" : "font-normal"}`}
             onClick={() => setCategory(cat)}
           >
@@ -78,9 +78,9 @@ const NewsBoard = ({search}) => {
                 key={cat}
                 onClick={() => {
                   setCategory(cat);
-                  setIsDropdownOpen(false); // Close dropdown after selection
+                  setIsDropdownOpen(false); // Closing dropdown after selection
                 }}
-                className={`block px-4 py-2 w-full text-left ${
+                className={`block px-4 py-2 w-full text-left hover:bg-gray-600 ${
                   category === cat ? "bg-blue-500 text-white" : "text-gray-800"
                 }`}
               >

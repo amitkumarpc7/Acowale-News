@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
+import { MdDarkMode,MdLightMode } from "react-icons/md";
 
 const Navbar = ({search,setSearch}) => {
   const [theme, setTheme] = useState("light");
@@ -47,9 +48,9 @@ const Navbar = ({search,setSearch}) => {
         {/* Theme Toggle Button */}
         <button
           onClick={handleToggle}
-          className="hidden md:flex px-4 py-2 bg-gray-200 dark:bg-blackPrimary rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white dark:border-white self-stretch"
+          className="hidden md:flex items-center justify-center px-4 py-2 bg-gray-200 dark:bg-blackPrimary rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white border dark:border-white self-stretch transition-colors duration-300 ease-in-out"
         >
-          {theme === "dark" ? "Light Mode" : "Dark Mode"}
+          {theme === "dark" ? <MdLightMode /> : <MdDarkMode/>}
         </button>
 
         {/* Mobile Menu Button */}
