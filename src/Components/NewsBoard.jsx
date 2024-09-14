@@ -1,32 +1,16 @@
 import React, { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
 
-const NewsBoard = ({ search }) => {
-  const [newsData, setNewsData] = useState([]);
-  const [category, setCategory] = useState("general");
+const NewsBoard = ({ search,category,setCategory,newsData }) => {
+  // const [category, setCategory] = useState("general");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const API_KEY = import.meta.env.VITE_API_KEY;
-
-  const getData = async (category) => {
-    const res = await fetch(
-      `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=in&max=100&apikey=${API_KEY}`
-    );
-    const data = await res.json();
-    setNewsData(data.articles);
-    // console.log(data.articles);
-  };
-
-  useEffect(() => {
-    getData(category);
-  }, [category]);
 
   // Dropdown for mobile screens
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  
-  const onSearch = (e) => {};
+
+
   return (
     <div className="min-h-screen pt-20 dark:bg-blackPrimary dark:text-white">
       <div className="hidden md:flex flex-wrap justify-center gap-4">

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
-import { MdDarkMode,MdLightMode } from "react-icons/md";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
-const Navbar = ({search,setSearch}) => {
+const Navbar = ({ search, setSearch,handleSearch }) => {
   const [theme, setTheme] = useState("light");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -37,10 +37,13 @@ const Navbar = ({search,setSearch}) => {
             type="text"
             placeholder="Search news"
             value={search}
-            onChange={(e)=>setSearch(e.target.value)}
+            onChange={(e) => setSearch(e.target.value)}
             className="flex-grow px-4 py-2 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white"
           />
-          <button className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 flex items-center justify-center self-stretch">
+          <button
+            className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 dark:bg-blue-700 flex items-center justify-center self-stretch"
+            onClick={handleSearch}
+          >
             <FaSearch />
           </button>
         </div>
@@ -50,7 +53,7 @@ const Navbar = ({search,setSearch}) => {
           onClick={handleToggle}
           className="hidden md:flex items-center justify-center px-4 py-2 bg-gray-200 dark:bg-blackPrimary rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white border dark:border-white self-stretch transition-colors duration-300 ease-in-out"
         >
-          {theme === "dark" ? <MdLightMode /> : <MdDarkMode/>}
+          {theme === "dark" ? <MdLightMode /> : <MdDarkMode />}
         </button>
 
         {/* Mobile Menu Button */}
