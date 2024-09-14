@@ -47,7 +47,7 @@ const NewsBoard = ({ search,category,setCategory,newsData,searchIndication }) =>
           {category.charAt(0).toUpperCase() + category.slice(1)}
         </button>
         {isDropdownOpen && (
-          <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded shadow-lg">
+          <div className="absolute mt-2 w-[87%] bg-white border border-gray-300 dark:border-white rounded shadow-lg">
             {[
               "general",
               "world",
