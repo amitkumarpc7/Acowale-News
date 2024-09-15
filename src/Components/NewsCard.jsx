@@ -51,12 +51,23 @@ const NewsCard = ({ data }) => {
                   <p className="text-sm sm:text-base md:text-lg mb-4">
                     {news.description}
                   </p>
+                  <div className="flex items-center justify-between mt-4">
                   <button
                     onClick={() => readMore(news.url)}
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
                   >
                     Read
                   </button>
+                  <div className="flex space-x-2">
+                    <p className="hidden md:flex text-sm ml-4 text-gray-600 dark:text-gray-400">
+                      {new Date(news.publishedAt).toString().slice(0, 15)}&nbsp;
+                      {new Date(news.publishedAt).toString().slice(16, 24)}
+                    </p>
+                    <p className="md:hidden text-sm text-gray-600 dark:text-gray-400">
+                      {new Date(news.publishedAt).toString().slice(0, 15)}
+                    </p>
+                  </div>
+                  </div>
                 </div>
               </div>
             ))
